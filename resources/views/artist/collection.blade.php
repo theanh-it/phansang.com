@@ -23,11 +23,12 @@ else $locate = "_".$locate;
             </ul>
         </div>
         <div class="detail-collection">
-            <button class="active"><i class="fa fa-long-arrow-down"></i></button>
             <div class="detail">
-                <h2>{{ $collections[$default]["name".$locate] }}</h2>
+                <h2 class="hover-title"> {{ $collections[$default]["name".$locate] }}</h2>
                 <div class="detail-content">
-                    {{ $collections[$default]["description".$locate] }}
+                    <div class="box-detail-content">
+                        {{ $collections[$default]["description".$locate] }}
+                    </div>
                 </div>
                 @foreach($post as $index => $item)
                 <div @if($index==$postDefault) class="image active" @else class="image" @endif>
@@ -105,6 +106,13 @@ else $locate = "_".$locate;
 <script src="/owl2/owl.carousel.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", ()=>{
+    var description = document.querySelector(".detail-collection .detail .detail-content");
+    document.querySelector(".hover-title").onmouseover = ()=>description.classList.toggle("active");
+    document.querySelector(".hover-title").onmouseout = ()=>description.classList.toggle("active");
+})
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
     $('.owl-carousel.owl-theme.box-items').owlCarousel({
         loop: false,
         margin:10,
@@ -125,12 +133,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 </script>
 <script>
-var showDetail = document.querySelector(".detail-collection button");
-showDetail.onclick = ()=>{
-    showDetail.classList.toggle("active");
-    var detail = document.querySelector(".detail-collection .detail .detail-content");
-    detail.classList.toggle("active");
-}
 // mobile menu collection
 document.addEventListener("DOMContentLoaded", ()=>{
     var buttonCollection = document.querySelector("button.mobile-collection");
@@ -154,9 +156,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     var collectionBoxs = document.querySelectorAll(".box-content .list-collection-mobile .owl-carousel .item");
     for(var i=0; i<images.length; i++) collectionBoxs[i].style.height = images[i].offsetWidth + "px";
 });
-
-// zoom
-
 </script>
 <script>
     var stt = {{ $postDefault }};
@@ -351,36 +350,51 @@ body#dark .name-collection{
     overflow: hidden;
     overflow-y: scroll;
     padding: 15px;
+    position: relative;
 }
 .box-collection .box-content .detail-collection .detail h2{
     color: white;
     font-size: 25px;
     font-weight: 500;
-    padding: 15px 0px;
+    padding-bottom: 15px;
     border-bottom: 2px solid white;
     margin-bottom: 15px; 
     display: inline-block;
 }
 .box-collection .box-content .detail-collection .detail h2::before{
    content: "{{ $nameC }}: ";
+   cursor: pointer;
    display: none;
 }
 .box-collection .box-content .detail-collection .detail .detail-content{
+    position: absolute;
+    width: calc(100% - 30px);
+    top: 60px;
+    left: 15px;
+    background: #000000c7;
+    z-index: 1;
     color: white;
+    padding: 0px;
     font-size: 15px;
-    max-height: 0;
-    transition: max-height 0.6s ease-out;
-    overflow: hidden;
     line-height: 30px;
-    justify-content: center;
+    text-align: justify;
+    overflow: hidden;
+    visibility: hidden;
+    transition: 0.4s;
+    opacity: 0;
+    transform: scale(0.5);
 }
 .box-collection .box-content .detail-collection .detail .detail-content.active{
-    max-height: 1000px;
-    transition: max-height 0.6s ease-in;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+.box-collection .box-content .detail-collection .detail .detail-content .box-detail-content{
+    margin: 15px;
 }
 .box-collection .box-content .detail-collection .detail .image{
     position: relative;
-    padding-top: 15px;
     display: none;
 }
 .box-collection .box-content .detail-collection .detail .image.active{
@@ -553,11 +567,24 @@ body#dark .name-collection{
         display: none;
     }
     .box-collection .box-content .detail-collection .detail .detail-content{
-        max-height: 100%;
+        position: relative;
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1.0);
+        top: 0px;
+        left: 0px;
+        width: auto;
+        background:none;
+    }
+    .box-collection .box-content .detail-collection .detail .detail-content .box-detail-content{
+        margin: 0px;
     }
     .box-collection .box-content .detail-collection .detail{
         height: auto;
         overflow: none;
+    }
+    .box-collection .box-content .detail-collection .detail h2{
+        padding-top: 15px;
     }
     .box-collection .box-content .detail-collection .detail h2::before{
         content: "{{ $nameC }}: ";
