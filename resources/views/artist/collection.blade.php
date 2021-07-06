@@ -2,6 +2,12 @@
 @section('content')
 @php 
 $locate = \Session::get('locale');
+
+$nameC = "";
+if($locate=="vi") $nameC = "Bộ sưu tập mới nhất";
+else if($locate=="en") $nameC = "New collection";
+else if($locate=="fr") $nameC = "Nouvelle collection";
+
 if($locate=="vi") $locate = "";
 else $locate = "_".$locate;
 @endphp
@@ -24,7 +30,7 @@ else $locate = "_".$locate;
                     {{ $collections[$default]["description".$locate] }}
                 </div>
                 @foreach($post as $index => $item)
-                <div @if($index==0) class="image active" @else class="image" @endif>
+                <div @if($index==$postDefault) class="image active" @else class="image" @endif>
                     <a data-magnify="pc" href="/images/{{ $item["image"] }}" class="zoom"><i class="fa fa-expand"></i></a>
                     <img src="/images/{{ $item["image"] }}">
                     <div class="box-info">
@@ -57,7 +63,7 @@ else $locate = "_".$locate;
         <div class="list-collection-mobile">
             <div class="box-active">
                 @foreach($post as $index => $item)
-                <div  @if($index==0) class="item active" @else class="item" @endif>
+                <div  @if($index==$postDefault) class="item active" @else class="item" @endif>
                     <a data-magnify="mobile" href="/images/{{ $item["image"] }}" class="zoom"><i class="fa fa-expand"></i></a>
                     <img src="/images/{{ $item["image"] }}">
                     <div class="box-info">
@@ -153,7 +159,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 </script>
 <script>
-    var stt = 0;
+    var stt = {{ $postDefault }};
     function chooseImage(index){
         var imageShow   = document.querySelectorAll(".box-content .detail-collection .image");
         imageShow[stt].classList.remove("active");
@@ -162,7 +168,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 </script>
 <script>
-    var sttMobile = 0;
+    var sttMobile = {{ $postDefault }};
     function chooseImageMobile(index, info){
         var imageShow   = document.querySelectorAll(".list-collection-mobile .box-active .item");
         imageShow[sttMobile].classList.remove("active");
@@ -308,7 +314,7 @@ body#dark .name-collection{
     border-bottom: 2px solid #898C9D;
 }
 .box-collection .box-content .collections ul li:first-child a::before{
-    content: "Newest Collection: "
+    content: "{{ $nameC }}: "
 }
 .box-collection .box-content .collections ul li a.active, .box-collection .box-content .collections ul li a:hover{
     border-bottom: 2px solid white;
@@ -354,6 +360,10 @@ body#dark .name-collection{
     border-bottom: 2px solid white;
     margin-bottom: 15px; 
     display: inline-block;
+}
+.box-collection .box-content .detail-collection .detail h2::before{
+   content: "{{ $nameC }}: ";
+   display: none;
 }
 .box-collection .box-content .detail-collection .detail .detail-content{
     color: white;
@@ -548,6 +558,12 @@ body#dark .name-collection{
     .box-collection .box-content .detail-collection .detail{
         height: auto;
         overflow: none;
+    }
+    .box-collection .box-content .detail-collection .detail h2::before{
+        content: "{{ $nameC }}: ";
+        @if($collections[0]["id"]==$collections[$default]["id"])
+        display: inline-block;
+        @endif
     }
     .box-collection .box-content .detail-collection .detail .image{
         display: none;

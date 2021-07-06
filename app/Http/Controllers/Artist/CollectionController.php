@@ -20,9 +20,18 @@ class CollectionController extends Controller
             }
         }
         
-        if($default==0) $post = count($collections) > 0 ? $postModel->where("collection_id", $collections[0]->id)->get() : [];
-        else $post = count($collections) > 0 ? $postModel->where("collection_id", $collection_id)->get() : [];
+        if($default==0){
+            $post = count($collections) > 0 ? $postModel->where("collection_id", $collections[0]->id)->get() : [];
+        }else $post = count($collections) > 0 ? $postModel->where("collection_id", $collection_id)->get() : [];
 
-        return view("artist.collection", compact("collections","post","default"));
+        $postDefault=0;
+        foreach($post as  $index => $item){
+            if($item["id"]==$collections[0]["main_post_id"]){
+                $postDefault = $index;
+                break;
+            }
+        };
+
+        return view("artist.collection", compact("collections","post","default","postDefault"));
     }
 }
