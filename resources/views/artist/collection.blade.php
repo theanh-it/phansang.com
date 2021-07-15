@@ -5,7 +5,7 @@ $locate = \Session::get('locale');
 
 $nameC = "";
 if($locate=="vi") $nameC = "Bộ sưu tập mới nhất";
-else if($locate=="en") $nameC = "New collection";
+else if($locate=="en") $nameC = "Newest collection";
 else if($locate=="fr") $nameC = "Nouvelle collection";
 
 if($locate=="vi") $locate = "";
@@ -24,7 +24,7 @@ else $locate = "_".$locate;
         </div>
         <div class="detail-collection">
             <div class="detail">
-                <h2 class="hover-title"> {{ $collections[$default]["name".$locate] }}</h2>
+                <h2 class="hover-title">{{ $collections[$default]["name".$locate] }}</h2>
                 <div class="detail-content">
                     <div class="box-detail-content">
                         {{ $collections[$default]["description".$locate] }}
@@ -36,7 +36,7 @@ else $locate = "_".$locate;
                     <img src="/images/{{ $item["image"] }}">
                     <div class="box-info">
                         <div class="info">
-                            INFO
+                            DETAIL
                             <div class="info-content">
                                 <p>
                                     @php 
@@ -85,7 +85,7 @@ else $locate = "_".$locate;
                 @endforeach
             </div>
             <div class="name-collection-mobile">
-                {{ $collections[0]["name".$locate] }}
+                {{ $collections[$default]["name".$locate] }}
             </div>
             <div class="owl-carousel owl-theme box-items">
                 @foreach($post as $index => $item)
@@ -95,9 +95,6 @@ else $locate = "_".$locate;
                 @endforeach
             </div>
         </div>
-    </div>
-    <div class="name-collection">
-        {{ $collections[$default]["name".$locate] }}
     </div>
 </div>
 @endsection
@@ -267,10 +264,9 @@ body#dark .name-collection{
     display: block;
 }
 .box-collection{
-    margin-top: 70px;
     width: 100%;
-    height: calc(100vh - 110px);
-    padding: 0 50px;
+    height: 100vh;
+    padding: 70px 50px 50px 50px;
 }
 .box-collection .name-collection{
     background: white;
@@ -279,11 +275,10 @@ body#dark .name-collection{
 }
 .box-collection .box-content {
     background: white;
-    height: calc(100% - 50px);
+    height: 100%;
     width: 100%;
     display: flex;
     padding: 15px;
-    padding-bottom: 5px;
 }
 .box-collection .box-content .list-collection-mobile{
     display: none;
@@ -402,7 +397,7 @@ body#dark .name-collection{
 }
 .box-collection .box-content .detail-collection .detail .image a.zoom{
     position: absolute;
-    top: 30px;
+    top: 15px;
     right: 15px;
     margin: 0px;
 }
@@ -417,34 +412,47 @@ body#dark .name-collection{
     width: 100%;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info{
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
+    position: fixed;
+    bottom: 78px;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info{
     color: white;
     position: relative;
-    padding: 15px;
-    font-size: 16px;
+    padding: 5px 15px;
+    font-size: 15px;
     cursor: pointer;
+    border: 1px solid white;
+    transition: 1s;
+    background-color: #898C9D;
+    font-weight: 500;
+}
+.box-collection .box-content .detail-collection .detail .image .box-info .info:hover{
+    color: #898C9D;
+    background-color: white;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info .info-content{
     position: absolute;
     bottom: 45px;
-    left: 15px;
+    left: -1px;
     background: #000000c7;
     min-width: 200px;
     padding: 15px;
     z-index: 1000;
-    display: none;
     font-size: 11px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+    transform: scale(0.5);
+    color: white;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info .info-content p{
     font-size: 11px;
     line-height: 30px;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info:hover .info-content{
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
 }
 .box-collection .box-content .list-collection{
     width: 50%;
@@ -561,7 +569,7 @@ body#dark .name-collection{
         content: "";
     }
     .box-collection .box-content .detail-collection{
-        padding-top: 40px;
+        padding-top: 110px;
     }
     .box-collection .box-content .detail-collection button{
         display: none;
