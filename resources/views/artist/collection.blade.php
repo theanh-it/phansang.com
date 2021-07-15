@@ -595,6 +595,7 @@ body#dark .name-collection{
         padding-top: 15px;
     }
     .box-collection .box-content .detail-collection .detail h2::before{
+        margin-right: 5px;
         content: "{{ $nameC }}: ";
         @if($collections[0]["id"]==$collections[$default]["id"])
         display: inline-block;
