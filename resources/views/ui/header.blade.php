@@ -104,6 +104,6 @@ $is_dark = \Session::get('is_dark');
             </div>
         </div>
     </header>
-    <a id="<?php echo($is_dark ? "dark-title" : "")?>" class="fixed-title toggle-mode cursor-pt" href="{{ url('switch-mode') }}">
+    <!--<a id="<?php echo($is_dark ? "dark-title" : "")?>" class="fixed-title toggle-mode cursor-pt" href="{{ url('switch-mode') }}">
         <span><?php echo($is_dark ? "Dark Mode" : "Light Mode");?></span>
-    </a>
+    </a>-->

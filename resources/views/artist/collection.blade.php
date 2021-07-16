@@ -211,9 +211,7 @@ body#dark .name-collection{
 }
 </style>
 <style>
-.magnify-image {
-    border: 1px solid white;
-}
+
 .magnify-modal {
     box-shadow: 0 0 6px 2px rgba(0, 0, 0, .3);
     background: #666666f5;
