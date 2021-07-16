@@ -36,7 +36,13 @@ else $locate = "_".$locate;
                     <img src="/images/{{ $item["image"] }}">
                     <div class="box-info">
                         <div class="info">
-                            DETAIL
+                            @if($locate == '_en')
+                                DETAIL
+                            @elseif($locate == '_fr')
+                                DÉTAIL
+                            @else
+                                CHI TIẾT
+                            @endif
                             <div class="info-content">
                                 <p>
                                     @php 
@@ -69,7 +75,13 @@ else $locate = "_".$locate;
                     <img src="/images/{{ $item["image"] }}">
                     <div class="box-info">
                         <div class="info">
-                            INFO
+                            @if($locate == '_en')
+                                DETAIL
+                            @elseif($locate == '_fr')
+                                DÉTAIL
+                            @else
+                                CHI TIẾT
+                            @endif
                             <div class="info-content">
                                 <p>
                                     @php 

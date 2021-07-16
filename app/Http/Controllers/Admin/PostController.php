@@ -190,7 +190,7 @@ class PostController extends Controller
             $post = Post::find($post_id);
             $collection = Collection::find($post->collection_id);
         }
-        return view('ui.detail_post')->with([
+        return view('ui.detail_post_v2')->with([
             'post' => $post,
             'collection' => $collection
         ]);
