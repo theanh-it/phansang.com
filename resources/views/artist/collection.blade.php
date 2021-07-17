@@ -365,6 +365,7 @@ body#dark .name-collection{
     border-bottom: 2px solid white;
     margin-bottom: 15px; 
     display: inline-block;
+    cursor: pointer;
 }
 .box-collection .box-content .detail-collection .detail h2::before{
    content: "{{ $nameC }}: ";

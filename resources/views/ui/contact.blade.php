@@ -18,18 +18,14 @@
                     <div class="section-columns-text contact-column-text" style="overflow-y: auto;">
                         <div class="custom-inner">
                             <div class="container">
-                                <h2 class="contact-list-title" style="font-size: 3em; font-weight: 400; ">
-                                    {{ __('labels.query') }}
-                                </h2>
-                                <div class="separator"></div>
-                                <div class="clearfix"></div>
+                                
                                 <ul class="project-details">
                                     <li><i class="fa fa-map-marker"></i><div class="pd-holder"><h5>{{ __('labels.address') }} : {{$info->address ?? ""}}</h5></div></li>
                                     <li><i class="fa fa-envelope"></i><div class="pd-holder"><h5>E-mail : {{$info->gmail ?? ""}}</h5></div></li>
                                     <li><i class="fa fa-phone"></i><div class="pd-holder"><h5>{{ __('labels.phone') }} : {{$info->phone_number ?? ""}}</h5></div></li>
                                 </ul>
                                 <div class="container contact-cnt">
-                                    <h2>{{ __('labels.write_us') }}</h2>
+                                    <h2 style="color:white;">{{ __('labels.write_us') }}</h2>
                                     <div class="separator" style="margin: 10px 0;"></div>
                                     <div id="contact-form">
                                         <form class="contact-form-cnt" method="post" action="{{route('contact.create')}}">
