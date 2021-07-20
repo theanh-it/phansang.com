@@ -351,7 +351,7 @@ body#dark .name-collection{
     transform: rotate(-90deg);
 }
 .box-collection .box-content .detail-collection .detail{
-    height: calc(100% - 60px);
+    height: calc(100% - 45px);
     overflow: hidden;
     overflow-y: scroll;
     padding: 15px;
@@ -431,16 +431,18 @@ body#dark .name-collection{
     position: relative;
     font-size: 11px;
     cursor: pointer;
-    transition: 1s;
+    transition: 0.6s;
     background-color: #898C9D;
     font-weight: 500;
+    padding-bottom: 0px;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info:hover{
-    text-decoration: underline;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info .info-content{
     position: absolute;
-    bottom: 45px;
+    bottom: 30px;
     left: -1px;
     background: #000000c7;
     min-width: 200px;
