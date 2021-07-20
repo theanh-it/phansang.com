@@ -429,17 +429,14 @@ body#dark .name-collection{
 .box-collection .box-content .detail-collection .detail .image .box-info .info{
     color: white;
     position: relative;
-    padding: 5px 15px;
-    font-size: 15px;
+    font-size: 14px;
     cursor: pointer;
-    border: 1px solid white;
     transition: 1s;
     background-color: #898C9D;
     font-weight: 500;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info:hover{
-    color: #898C9D;
-    background-color: white;
+    text-decoration: underline;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info .info-content{
     position: absolute;

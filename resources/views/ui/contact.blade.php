@@ -84,3 +84,10 @@
     </script>
 @endsection
 
+@section('css')
+<style>
+#sec1 .project-details li i{
+    color: white;
+}
+</style>    
+@endsection
