@@ -429,7 +429,7 @@ body#dark .name-collection{
 .box-collection .box-content .detail-collection .detail .image .box-info .info{
     color: white;
     position: relative;
-    font-size: 14px;
+    font-size: 11px;
     cursor: pointer;
     transition: 1s;
     background-color: #898C9D;
