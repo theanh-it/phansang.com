@@ -356,6 +356,7 @@ body#dark .name-collection{
     overflow-y: scroll;
     padding: 15px;
     position: relative;
+    padding-bottom: 0px;
 }
 .box-collection .box-content .detail-collection .detail h2{
     color: white;
