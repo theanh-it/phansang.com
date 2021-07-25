@@ -475,7 +475,9 @@ body#dark .name-collection{
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info .info-content p{
     font-size: 11px;
-    line-height: 30px;
+    line-height: 25px;
+    padding: 0px;
+    font-family: arial;
 }
 .box-collection .box-content .detail-collection .detail .image .box-info .info:hover .info-content{
     opacity: 1;
