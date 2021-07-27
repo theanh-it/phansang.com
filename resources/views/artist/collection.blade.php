@@ -25,7 +25,8 @@ else $locate = "_".$locate;
         <div class="detail-collection">
             <div class="detail">
                 <div class="box-1">
-                    <h2 class="hover-title">{{ $collections[$default]["name".$locate] }}</h2>
+                    <h2>{{ $collections[$default]["name".$locate] }}</h2>
+                    <button class="hover-title">ABOUT</button>
                     <div class="detail-content">
                         <div class="box-detail-content">
                             {{ $collections[$default]["description".$locate] }}
@@ -375,15 +376,27 @@ body#dark .name-collection{
     position: relative;
     padding-bottom: 0px;
 }
+.box-collection .box-content .detail-collection .detail button{
+    outline: none;
+    border: none;
+    background: none;
+    margin: 0px;
+    padding: 10px 20px;
+    transition: 0.6s;
+    border-bottom: 1px solid #898C9D;
+    font-size: 11px;
+}
+.box-collection .box-content .detail-collection .detail button:hover{
+    border-bottom: 1px solid white;
+}
 .box-collection .box-content .detail-collection .detail h2{
     color: white;
     font-size: 25px;
     font-weight: 500;
-    padding-bottom: 15px;
-    border-bottom: 2px solid white;
-    margin-bottom: 15px; 
     display: inline-block;
     cursor: pointer;
+    padding: 0px;
+    margin: 0px;
 }
 .box-collection .box-content .detail-collection .detail h2::before{
    content: "{{ $nameC }}: ";
@@ -393,7 +406,7 @@ body#dark .name-collection{
 .box-collection .box-content .detail-collection .detail .detail-content{
     position: absolute;
     width: calc(100% - 30px);
-    top: 60px;
+    top: 80px;
     left: 15px;
     background: #000000c7;
     z-index: 1;
