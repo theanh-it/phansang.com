@@ -26,7 +26,15 @@ else $locate = "_".$locate;
             <div class="detail">
                 <div class="box-1">
                     <h2>{{ $collections[$default]["name".$locate] }}</h2>
-                    <button class="hover-title">ABOUT</button>
+                    <button class="hover-title">
+                        @if($locate == '_en')
+                            ABOUT
+                        @elseif($locate == '_fr')
+                            À PROPOS DE
+                        @else
+                            MÔ TẢ
+                        @endif
+                    </button>
                     <div class="detail-content">
                         <div class="box-detail-content">
                             {{ $collections[$default]["description".$locate] }}
@@ -381,10 +389,10 @@ body#dark .name-collection{
     border: none;
     background: none;
     margin: 0px;
-    padding: 10px 20px;
     transition: 0.6s;
     border-bottom: 1px solid #898C9D;
     font-size: 11px;
+    width: auto;
 }
 .box-collection .box-content .detail-collection .detail button:hover{
     border-bottom: 1px solid white;
