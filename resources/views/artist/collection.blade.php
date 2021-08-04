@@ -37,7 +37,11 @@ else $locate = "_".$locate;
                     </button>
                     <div class="detail-content">
                         <div class="box-detail-content">
-                            {{ $collections[$default]["description".$locate] }}
+                        @php 
+                        $ok = explode("\n", $collections[$default]["description".$locate]);
+                        $ok = join("</br>", $ok);
+                        @endphp
+                            {!! $ok !!}
                         </div>
                     </div>
                 </div>
@@ -129,6 +133,8 @@ else $locate = "_".$locate;
 <script>
 document.addEventListener("DOMContentLoaded", ()=>{
     var description = document.querySelector(".detail-collection .detail .detail-content");
+    description.onmouseover = ()=>description.classList.toggle("active");
+    description.onmouseout = ()=>description.classList.toggle("active");
     document.querySelector(".hover-title").onmouseover = ()=>description.classList.toggle("active");
     document.querySelector(".hover-title").onmouseout = ()=>description.classList.toggle("active");
 })
@@ -414,7 +420,9 @@ body#dark .name-collection{
 .box-collection .box-content .detail-collection .detail .detail-content{
     position: absolute;
     width: calc(100% - 30px);
-    top: 80px;
+    max-height: calc(100% - 50px);
+    margin-bottom: 15px;
+    top: 70px;
     left: 15px;
     background: #000000c7;
     z-index: 1;
@@ -424,6 +432,7 @@ body#dark .name-collection{
     line-height: 30px;
     text-align: justify;
     overflow: hidden;
+    overflow-y: scroll;
     visibility: hidden;
     transition: 0.4s;
     opacity: 0;
